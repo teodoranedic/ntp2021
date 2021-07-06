@@ -8,7 +8,7 @@ Simulacija n-tela aproksimira kretanje čestica koje su u međusobnoj interakcij
 
 ### Algoritam - brute force
 Problem se rešava upotrebom Njutnove jednačine gravitacione sile, gde se ukupna sila koja utiče na svaku česticu računa sumiranjem sila koje daju pojedinačne čestice u sistemu. Računanjem ukupne sile za svaku česticu, može se dalje dobiti brzina i pozicija čestice, korišćenje diskretizovanog vremenskog koraka (dt). Ova metoda je brute-force, jedina aproksimacija je da se ubrzanje čestica smatra konstantnim tokom vremenskog koraka. Ukoliko je korak dovoljno mali, aproksimacija postaje validna, ali to ima cenu većeg broja izračunavanja. 
-Glavni nedostatak ovog algoritma je asimptotsko vreme računanja koje iznosi N2 gde je N broj čestica, što znači da ukoliko dupliramo broj čestica, vreme računanja će biti 4 puta veće. Za veliki broj čestica ovaj algoritam je previše spor, pa se koriste druge metode kao što je Barnes-Hut, rekurzivni algoritam koji je zasnovan na kreiranju posebne strukture podataka oct-tree.
+Glavni nedostatak ovog algoritma je asimptotsko vreme računanja koje iznosi N<sup>2</sup> gde je N broj čestica, što znači da ukoliko dupliramo broj čestica, vreme računanja će biti 4 puta veće. Za veliki broj čestica ovaj algoritam je previše spor, pa se koriste druge metode kao što je Barnes-Hut, rekurzivni algoritam koji je zasnovan na kreiranju posebne strukture podataka oct-tree.
 
 ### Numeričke metode
 Numeričke metode koje su primenjene za računanje brzina i pozicija čestica su Ojlerova i Leapfrog (žablji skok) metoda. Za inicijalni korak se koristi Ojlerova metoda za procenu brzine i pozicije (jer nemamo i-1 vrednosti koje su potrebne za Leapfrog):
