@@ -4,7 +4,8 @@
 Sekvencijalna i paralelizovana verzija rešenja u Python-u i Go-u.
 
 ### Opis problema
-Simulacija n-tela aproksimira kretanje čestica koje su u međusobnoj interakciji putem fizičkih sila. Na osnovu ovako široke definicije, te čestice mogu biti u rasponu od nebeskih tela do atoma u oblaku gasa. Specijalizacija problema n-tela koji je rešavan u ovom projektu je vezana za gravitacione interakcije nebeskih tela u Sunčevom sistemu (n je 10, zajedno sa Suncem i Plutonom kao planetom patuljkom).  
+Simulacija n-tela aproksimira kretanje čestica koje su u međusobnoj interakciji putem fizičkih sila. Na osnovu ovako široke definicije, te čestice mogu biti u rasponu od nebeskih tela do atoma u oblaku gasa. Specijalizacija problema n-tela koji je rešavan u ovom projektu je vezana za gravitacione interakcije nebeskih tela u Sunčevom sistemu (n je 10, zajedno sa Suncem i Plutonom kao planetom patuljkom). 
+Za potrebe eksperimenata jakog i slabog skaliranja, u sistem će biti dodata nova tela (asteroidi ili komete), čime će se testirati ubrzanje paralelizovane verzije programa u odnosu na sekvencijalnu.
 
 ### Algoritam - brute force
 Problem se rešava upotrebom Njutnove jednačine gravitacione sile, gde se ukupna sila koja utiče na svaku česticu računa sumiranjem sila koje daju pojedinačne čestice u sistemu. Računanjem ukupne sile za svaku česticu, može se dalje dobiti brzina i pozicija čestice, korišćenje diskretizovanog vremenskog koraka (dt). Ova metoda je brute-force, jedina aproksimacija je da se ubrzanje čestica smatra konstantnim tokom vremenskog koraka. Ukoliko je korak dovoljno mali, aproksimacija postaje validna, ali to ima cenu većeg broja izračunavanja. 
@@ -25,10 +26,10 @@ Na osnovu novih pozicija se u svakoj iteraciji računa ubrzanje pomoću Njutnovo
 gde je G gravitaciona konstanta, m1 i m2 mase čestica i r rastojanje izmedju njih.
 
 ### Paralelizacija
-Paralelizacija u Python jeziku je rađena pomoću multiprocessing paketa.
+Paralelizacija u Python jeziku je rađena pomoću multiprocessing paketa, a u Go programskom jeziku pomoću goroutine-a.
 
 ### Vizualizacija rešenja
-Vizualizacija je zamišljena kao sekvenca slika nakon svake iteracije.
+Vizualizacija je zamišljena kao sekvenca slika nakon svake iteracije upotrebom Pharo okruženja.
 
 ## Student
 Teodora Nedić, sw41/2017
