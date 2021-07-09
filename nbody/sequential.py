@@ -5,25 +5,25 @@ from math import sqrt
 import time
 import random
 
-mercury = Body(xMercury, yMercury, zMercury, vxMercury, vyMercury, vzMercury, mMercury, dMercury)
-venus = Body(xVenus, yVenus, zVenus, vxVenus, vyVenus, vzVenus, mVenus, dVenus)
-earth = Body(xEarth, yEarth, zEarth, vxEarth, vyEarth, vzEarth, mEarth, dEarth)
-mars = Body(xMars, yMars, zMars, vxMars, vyMars, vzMars, mMars, dMars)
-jupiter = Body(xJup, yJup, zJup, vxJup, vyJup, vzJup, mJup, dJup)
-saturn = Body(xSaturn, ySaturn, zSaturn, vxSaturn, vySaturn, vzSaturn, mSaturn,dSaturn)
-uranus = Body(xUranus, yUranus, zUranus, vxUranus, vyUranus, vzUranus, mUranus, dUranus)
-neptune = Body(xNeptune, yNeptune, zNeptune, vxNeptune, vyNeptune, vzNeptune, mNeptune, dNeptune)
-pluto = Body(xPluto, yPluto, zPluto, vxPluto, vyPluto, vzPluto, mPluto, dPluto)
-sun = Body(xSun, ySun, zSun, vxSun, vySun, vzSun, mSun, dSun)
+mercury = Body(xMercury, yMercury, zMercury, vxMercury, vyMercury, vzMercury, mMercury, dMercury, N)
+venus = Body(xVenus, yVenus, zVenus, vxVenus, vyVenus, vzVenus, mVenus, dVenus, N)
+earth = Body(xEarth, yEarth, zEarth, vxEarth, vyEarth, vzEarth, mEarth, dEarth, N)
+mars = Body(xMars, yMars, zMars, vxMars, vyMars, vzMars, mMars, dMars, N)
+jupiter = Body(xJup, yJup, zJup, vxJup, vyJup, vzJup, mJup, dJup, N)
+saturn = Body(xSaturn, ySaturn, zSaturn, vxSaturn, vySaturn, vzSaturn, mSaturn, dSaturn, N)
+uranus = Body(xUranus, yUranus, zUranus, vxUranus, vyUranus, vzUranus, mUranus, dUranus, N)
+neptune = Body(xNeptune, yNeptune, zNeptune, vxNeptune, vyNeptune, vzNeptune, mNeptune, dNeptune, N)
+pluto = Body(xPluto, yPluto, zPluto, vxPluto, vyPluto, vzPluto, mPluto, dPluto, N)
+sun = Body(xSun, ySun, zSun, vxSun, vySun, vzSun, mSun, dSun, N)
 
 # solar system
 s = [sun, mercury, venus, earth, mars, jupiter, saturn, uranus, neptune, pluto]
 masses = [mSun, mMercury, mVenus, mEarth, mMars, mJup, mSaturn, mUranus, mNeptune, mPluto]
 
 random.seed(1)
-for i in range(planets-10):
+for i in range(planets - 10):
     s.append(Body(random.uniform(x1, x2), random.uniform(y1, y2), random.uniform(z1, z2),
-                  vx_average, vy_average, vz_average, mass_average, d_average))
+                  vx_average, vy_average, vz_average, mass_average, d_average, N))
     masses.append(mass_average)
 
 for i in range(planets):
@@ -112,22 +112,29 @@ def plot_results():
     plt.show()
 
 
-if __name__ == '__main__':
-    print("Calculating...")
+def run_simulation(N, planets):
     start = time.time()
+    p1 = 0
+    p2 = 0
+
+    print(N, planets)
     for i in range(N):
         # find acceleration due to gravity
+        s1 = time.time()
         for j in range(planets):
             acceleration(s[j].x_hist[i], s[j].y_hist[i], s[j].z_hist[i], G, j, i)
 
+        e1 = time.time()
+
         # velocity and position update
         # at the beginning of the array, you can't use leap frog, so it suffices to use the 1st order Euler method
+        s2 = time.time()
         if i == 0:
             for j in range(planets):
                 # velocity
                 vx_new, vy_new, vz_new = velocity_euler(s[j].vx_hist[i], s[j].vy_hist[i], s[j].vz_hist[i],
                                                         s[j].ax, s[j].ay, s[j].az, dt)
-                s[j].vx_hist[i+1], s[j].vy_hist[i+1], s[j].vz_hist[i+1] = vx_new, vy_new, vz_new
+                s[j].vx_hist[i + 1], s[j].vy_hist[i + 1], s[j].vz_hist[i + 1] = vx_new, vy_new, vz_new
                 # position
                 x_new, y_new, z_new = position_euler(s[j].x_hist[i], s[j].y_hist[i], s[j].z_hist[i],
                                                      s[j].vx_hist[i], s[j].vy_hist[i], s[j].vz_hist[i], dt)
@@ -136,17 +143,32 @@ if __name__ == '__main__':
         else:  # use leap frog method
             for j in range(planets):
                 # velocity
-                vx_new, vy_new, vz_new = velocity(s[j].vx_hist[i-1], s[j].vy_hist[i-1], s[j].vz_hist[i-1],
+                vx_new, vy_new, vz_new = velocity(s[j].vx_hist[i - 1], s[j].vy_hist[i - 1], s[j].vz_hist[i - 1],
                                                   s[j].ax, s[j].ay, s[j].az, dt)
                 s[j].vx_hist[i + 1], s[j].vy_hist[i + 1], s[j].vz_hist[i + 1] = vx_new, vy_new, vz_new
                 # position
-                x_new, y_new, z_new = position(s[j].x_hist[i-1], s[j].y_hist[i-1], s[j].z_hist[i-1],
+                x_new, y_new, z_new = position(s[j].x_hist[i - 1], s[j].y_hist[i - 1], s[j].z_hist[i - 1],
                                                s[j].vx_hist[i], s[j].vy_hist[i], s[j].vz_hist[i], dt)
 
                 s[j].x_hist[i + 1], s[j].y_hist[i + 1], s[j].z_hist[i + 1] = x_new, y_new, z_new
 
+        e2 = time.time()
+        p1 += e1 - s1
+        p2 += e2 - s2
+
     end = time.time()
-    print(end-start)
+
+    return end-start, p1, p2
+
+
+if __name__ == '__main__':
+    print("Calculating...")
+    p, p1, p2 = run_simulation(N, planets)
+
+    # print(p1)
+    # print(p2)
+    # print((p1/p)*100, "% can be parallelized")
+    # print((p2/p)*100, "% cannot be parallelized")
 
     # generate_file()
     plot_results()

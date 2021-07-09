@@ -1,10 +1,9 @@
-from constants import *
-import multiprocessing as mp
+
 import numpy as np
 
 
 class Body:
-    def __init__(self, x, y, z, vx, vy, vz, mass, d):
+    def __init__(self, x, y, z, vx, vy, vz, mass, d, n):
         self.x = x
         self.y = y
         self.z = z
@@ -30,14 +29,14 @@ class Body:
         # self.vy_hist = mp.Array('d', N+1, lock=False)
         # self.vz_hist = mp.Array('d', N+1, lock=False)
 
-        self.ax_hist = np.zeros(N + 1)
-        self.ay_hist = np.zeros(N + 1)
-        self.az_hist = np.zeros(N + 1)
+        self.ax_hist = np.zeros(n + 1)
+        self.ay_hist = np.zeros(n + 1)
+        self.az_hist = np.zeros(n + 1)
 
-        self.x_hist = np.zeros(N + 1)
-        self.y_hist = np.zeros(N + 1)
-        self.z_hist = np.zeros(N + 1)
+        self.x_hist = np.zeros(n + 1)
+        self.y_hist = np.zeros(n + 1)
+        self.z_hist = np.zeros(n + 1)
 
-        self.vx_hist = np.zeros(N + 1)
-        self.vy_hist = np.zeros(N + 1)
-        self.vz_hist = np.zeros(N + 1)
+        self.vx_hist = np.zeros(n + 1)
+        self.vy_hist = np.zeros(n + 1)
+        self.vz_hist = np.zeros(n + 1)

@@ -7,16 +7,16 @@ from math import sqrt
 import time
 import random
 
-mercury = Body(xMercury, yMercury, zMercury, vxMercury, vyMercury, vzMercury, mMercury, dMercury)
-venus = Body(xVenus, yVenus, zVenus, vxVenus, vyVenus, vzVenus, mVenus, dVenus)
-earth = Body(xEarth, yEarth, zEarth, vxEarth, vyEarth, vzEarth, mEarth, dEarth)
-mars = Body(xMars, yMars, zMars, vxMars, vyMars, vzMars, mMars, dMars)
-jupiter = Body(xJup, yJup, zJup, vxJup, vyJup, vzJup, mJup, dJup)
-saturn = Body(xSaturn, ySaturn, zSaturn, vxSaturn, vySaturn, vzSaturn, mSaturn,dSaturn)
-uranus = Body(xUranus, yUranus, zUranus, vxUranus, vyUranus, vzUranus, mUranus, dUranus)
-neptune = Body(xNeptune, yNeptune, zNeptune, vxNeptune, vyNeptune, vzNeptune, mNeptune, dNeptune)
-pluto = Body(xPluto, yPluto, zPluto, vxPluto, vyPluto, vzPluto, mPluto, dPluto)
-sun = Body(xSun, ySun, zSun, vxSun, vySun, vzSun, mSun, dSun)
+mercury = Body(xMercury, yMercury, zMercury, vxMercury, vyMercury, vzMercury, mMercury, dMercury, N)
+venus = Body(xVenus, yVenus, zVenus, vxVenus, vyVenus, vzVenus, mVenus, dVenus, N)
+earth = Body(xEarth, yEarth, zEarth, vxEarth, vyEarth, vzEarth, mEarth, dEarth, N)
+mars = Body(xMars, yMars, zMars, vxMars, vyMars, vzMars, mMars, dMars, N)
+jupiter = Body(xJup, yJup, zJup, vxJup, vyJup, vzJup, mJup, dJup, N)
+saturn = Body(xSaturn, ySaturn, zSaturn, vxSaturn, vySaturn, vzSaturn, mSaturn, dSaturn, N)
+uranus = Body(xUranus, yUranus, zUranus, vxUranus, vyUranus, vzUranus, mUranus, dUranus, N)
+neptune = Body(xNeptune, yNeptune, zNeptune, vxNeptune, vyNeptune, vzNeptune, mNeptune, dNeptune, N)
+pluto = Body(xPluto, yPluto, zPluto, vxPluto, vyPluto, vzPluto, mPluto, dPluto, N)
+sun = Body(xSun, ySun, zSun, vxSun, vySun, vzSun, mSun, dSun, N)
 
 # solar system
 s = [sun, mercury, venus, earth, mars, jupiter, saturn, uranus, neptune, pluto]
@@ -25,7 +25,7 @@ masses = [mSun, mMercury, mVenus, mEarth, mMars, mJup, mSaturn, mUranus, mNeptun
 random.seed(1)
 for i in range(planets-10):
     s.append(Body(random.uniform(x1, x2), random.uniform(y1, y2), random.uniform(z1, z2),
-                  vx_average, vy_average, vz_average, mass_average, d_average))
+                  vx_average, vy_average, vz_average, mass_average, d_average, N))
     masses.append(mass_average)
 
 # lists used for passing as argument to parallel tasks
@@ -126,18 +126,22 @@ def plot_results():
     plt.show()
 
 
-if __name__ == '__main__':
-    print("Calculating...")
+def run_simulation_parallel(cpu_count, N, planets):
+    print(N, planets)
+
     start = time.time()
-    pool = mp.Pool(mp.cpu_count())  # cpu count is 4
+    pool = mp.Pool(cpu_count)  # cpu count is 4
     for i in range(N):
         # acceleration
         array = [[], [], []]
         # parallel
-        results = pool.starmap(acceleration, [(current_pos_x, current_pos_y, current_pos_z, 0, round(planets/4)),
-                                          (current_pos_x, current_pos_y, current_pos_z, round(planets/4), round(planets/2)),
-                                          (current_pos_x, current_pos_y, current_pos_z, round(planets/2), round(3 * planets / 4)),
-                                          (current_pos_x, current_pos_y, current_pos_z, round(3 * planets / 4), planets)])
+        results = pool.starmap(acceleration, [(current_pos_x, current_pos_y, current_pos_z, 0, round(planets / 4)),
+                                              (current_pos_x, current_pos_y, current_pos_z, round(planets / 4),
+                                               round(planets / 2)),
+                                              (current_pos_x, current_pos_y, current_pos_z, round(planets / 2),
+                                               round(3 * planets / 4)),
+                                              (current_pos_x, current_pos_y, current_pos_z, round(3 * planets / 4),
+                                               planets)])
 
         # create preferred structure from results
         for t in range(4):  # 4 tasks
@@ -151,7 +155,7 @@ if __name__ == '__main__':
                 # velocity
                 vx_new, vy_new, vz_new = velocity_euler(s[j].vx_hist[i], s[j].vy_hist[i], s[j].vz_hist[i],
                                                         array[0][j], array[1][j], array[2][j], dt)
-                s[j].vx_hist[i+1], s[j].vy_hist[i+1], s[j].vz_hist[i+1] = vx_new, vy_new, vz_new
+                s[j].vx_hist[i + 1], s[j].vy_hist[i + 1], s[j].vz_hist[i + 1] = vx_new, vy_new, vz_new
                 # position
                 x_new, y_new, z_new = position_euler(s[j].x_hist[i], s[j].y_hist[i], s[j].z_hist[i],
                                                      s[j].vx_hist[i], s[j].vy_hist[i], s[j].vz_hist[i], dt)
@@ -161,18 +165,25 @@ if __name__ == '__main__':
         else:  # use leap frog method to update velocity
             for j in range(planets):
                 # velocity
-                vx_new, vy_new, vz_new = velocity(s[j].vx_hist[i-1], s[j].vy_hist[i-1], s[j].vz_hist[i-1],
+                vx_new, vy_new, vz_new = velocity(s[j].vx_hist[i - 1], s[j].vy_hist[i - 1], s[j].vz_hist[i - 1],
                                                   array[0][j], array[1][j], array[2][j], dt)
                 s[j].vx_hist[i + 1], s[j].vy_hist[i + 1], s[j].vz_hist[i + 1] = vx_new, vy_new, vz_new
                 # position
-                x_new, y_new, z_new = position(s[j].x_hist[i-1], s[j].y_hist[i-1], s[j].z_hist[i-1],
+                x_new, y_new, z_new = position(s[j].x_hist[i - 1], s[j].y_hist[i - 1], s[j].z_hist[i - 1],
                                                s[j].vx_hist[i], s[j].vy_hist[i], s[j].vz_hist[i], dt)
 
                 s[j].x_hist[i + 1], s[j].y_hist[i + 1], s[j].z_hist[i + 1] = x_new, y_new, z_new
                 current_pos_x[j], current_pos_y[j], current_pos_z[j] = x_new, y_new, z_new
 
     end = time.time()
-    print(end-start)
+    pool.close()
+    return end-start
+
+
+if __name__ == '__main__':
+    print("Calculating...")
+    t = run_simulation_parallel(mp.cpu_count(), N, planets)
+    print(t)
 
     # generate_file()
     plot_results()

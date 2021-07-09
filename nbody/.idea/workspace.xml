@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cb0ed8cf-93b4-4c5c-abd0-60c2e5f3438a" name="Default Changelist" comment="" />
+    <list default="true" id="cb0ed8cf-93b4-4c5c-abd0-60c2e5f3438a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/body.py" beforeDir="false" afterPath="$PROJECT_DIR$/body.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parallel.py" beforeDir="false" afterPath="$PROJECT_DIR$/parallel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sequential.py" beforeDir="false" afterPath="$PROJECT_DIR$/sequential.py" afterDir="false" />
+    </list>
     <ignored path=".idea/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -54,38 +59,38 @@
     <session id="-557651507">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.2" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.open.time.6" value="1" />
+          <entry key="project.opened" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="2" />
+          <entry key="png" value="3" />
+          <entry key="py" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="2" />
+          <entry key="Image" value="3" />
+          <entry key="Python" value="4" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="py" value="2573" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="Python" value="2573" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/sequential.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="129" column="47" lean-forward="true" selection-start-line="129" selection-start-column="47" selection-end-line="129" selection-end-column="47" />
-              <folding>
-                <element signature="e#0#21#0" expanded="true" />
-                <marker date="1625737450972" expanded="true" signature="4117:4120" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/constants.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -95,14 +100,25 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/sequential.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="327">
+              <caret line="163" column="26" lean-forward="true" selection-start-line="163" selection-start-column="26" selection-end-line="163" selection-end-column="26" />
+              <folding>
+                <element signature="e#0#21#0" expanded="true" />
+                <marker date="1625791824720" expanded="true" signature="127:1646" ph="..." />
+                <marker date="1625791824720" expanded="true" signature="4153:6241" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/body.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="6" column="51" selection-start-line="6" selection-start-column="51" selection-end-line="6" selection-end-column="51" />
-              <folding>
-                <element signature="e#0#23#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="397">
+              <caret line="41" column="33" selection-start-line="41" selection-start-column="33" selection-end-line="41" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -110,13 +126,38 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/parallel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="127" lean-forward="true" selection-start-line="127" selection-end-line="127" />
+            <state relative-caret-position="100">
+              <caret line="178" column="16" lean-forward="true" selection-start-line="131" selection-start-column="5" selection-end-line="131" selection-end-column="23" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
+                <marker date="1625758084747" expanded="true" signature="1938:1940" ph="..." />
+                <marker date="1625758084747" expanded="true" signature="4706:7599" ph="..." />
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/experiments.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-139">
+              <caret line="62" column="60" selection-start-line="62" selection-start-column="60" selection-end-line="62" selection-end-column="60" />
+              <folding>
+                <element signature="e#0#24#0" expanded="true" />
+                <marker date="1625791790430" expanded="true" signature="1707:2675" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/strong_scaling.png">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/weak_scaling.png">
+          <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
     </leaf>
@@ -150,14 +191,15 @@
         <option value="$USER_HOME$/Downloads/PW-NBodySimulation-master/simulations/distributed/simulation.py" />
         <option value="$PROJECT_DIR$/paralleltest.py" />
         <option value="$USER_HOME$/Downloads/PW-NBodySimulation-master/simulations/parallel/simulation.py" />
-        <option value="$PROJECT_DIR$/body.py" />
         <option value="$PROJECT_DIR$/parallel_2.py" />
         <option value="$PROJECT_DIR$/parallel_3.py" />
-        <option value="$PROJECT_DIR$/constants.py" />
         <option value="$PROJECT_DIR$/seq_large_n.py" />
         <option value="$PROJECT_DIR$/parallel_4.py" />
-        <option value="$PROJECT_DIR$/sequential.py" />
+        <option value="$PROJECT_DIR$/body.py" />
         <option value="$PROJECT_DIR$/parallel.py" />
+        <option value="$PROJECT_DIR$/experiments.py" />
+        <option value="$PROJECT_DIR$/constants.py" />
+        <option value="$PROJECT_DIR$/sequential.py" />
       </list>
     </option>
   </component>
@@ -166,13 +208,14 @@
     <option name="width" value="1085" />
     <option name="height" value="955" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -184,11 +227,18 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$/.idea" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Ignored.Files" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\teodo\Desktop\ntp2021\nbody\resources" />
+      <recent name="C:\Users\teodo\Desktop\ntp2021\nbody\history" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -224,6 +274,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="experiments" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="nbody" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/experiments.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="parallel (1)" type="PythonConfigurationType" factoryName="Python">
       <module name="nbody" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -237,27 +308,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/parallel.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="parallel_3" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="nbody" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/parallel_3.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -332,18 +382,18 @@
     <list>
       <item itemvalue="Python.parallel (1)" />
       <item itemvalue="Python.seq_large_n" />
-      <item itemvalue="Python.parallel_3" />
       <item itemvalue="Python.parallel_4" />
       <item itemvalue="Python.constants" />
       <item itemvalue="Python.sequential" />
+      <item itemvalue="Python.experiments" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.sequential" />
+        <item itemvalue="Python.experiments" />
         <item itemvalue="Python.parallel_4" />
         <item itemvalue="Python.seq_large_n" />
         <item itemvalue="Python.constants" />
-        <item itemvalue="Python.parallel_3" />
       </list>
     </recent_temporary>
   </component>
@@ -368,7 +418,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32867134" />
-      <window_info anchor="bottom" id="Run" order="2" side_tool="true" weight="0.2825175" />
+      <window_info anchor="bottom" id="Run" order="2" side_tool="true" weight="0.31748253" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -462,6 +512,30 @@
     <entry file="file://$PROJECT_DIR$/NBodyOrbit10_parallel.png" />
     <entry file="file://$PROJECT_DIR$/NBodyOrbit10.png" />
     <entry file="file://$PROJECT_DIR$/parallel.txt" />
+    <entry file="file://$PROJECT_DIR$/body.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="397">
+          <caret line="41" column="33" selection-start-line="41" selection-start-column="33" selection-end-line="41" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/strong_scaling.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/weak_scaling.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-139">
+          <caret line="62" column="60" selection-start-line="62" selection-start-column="60" selection-end-line="62" selection-end-column="60" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+            <marker date="1625791790430" expanded="true" signature="1707:2675" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/constants.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="320">
@@ -469,33 +543,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/body.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="6" column="51" selection-start-line="6" selection-start-column="51" selection-end-line="6" selection-end-column="51" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/parallel.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="127" lean-forward="true" selection-start-line="127" selection-end-line="127" />
+        <state relative-caret-position="100">
+          <caret line="178" column="16" lean-forward="true" selection-start-line="131" selection-start-column="5" selection-end-line="131" selection-end-column="23" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
+            <marker date="1625758084747" expanded="true" signature="1938:1940" ph="..." />
+            <marker date="1625758084747" expanded="true" signature="4706:7599" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sequential.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="129" column="47" lean-forward="true" selection-start-line="129" selection-start-column="47" selection-end-line="129" selection-end-column="47" />
+        <state relative-caret-position="327">
+          <caret line="163" column="26" lean-forward="true" selection-start-line="163" selection-start-column="26" selection-end-line="163" selection-end-column="26" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
-            <marker date="1625737450972" expanded="true" signature="4117:4120" ph="..." />
+            <marker date="1625791824720" expanded="true" signature="127:1646" ph="..." />
+            <marker date="1625791824720" expanded="true" signature="4153:6241" ph="..." />
           </folding>
         </state>
       </provider>
