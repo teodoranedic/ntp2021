@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cb0ed8cf-93b4-4c5c-abd0-60c2e5f3438a" name="Default Changelist" comment="" />
+    <list default="true" id="cb0ed8cf-93b4-4c5c-abd0-60c2e5f3438a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../nbody-go/sequential.go" beforeDir="false" afterPath="$PROJECT_DIR$/../nbody-go/sequential.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nbody-go/types/constants.go" beforeDir="false" afterPath="$PROJECT_DIR$/../nbody-go/types/constants.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <ignored path=".idea/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -54,11 +58,13 @@
     <session id="-557651507">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
+          <entry key="project.closed" value="4" />
           <entry key="project.open.time.18" value="1" />
           <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.41" value="1" />
           <entry key="project.open.time.6" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.open.time.73" value="1" />
+          <entry key="project.opened" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -90,17 +96,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/constants.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="520">
-              <caret line="31" column="16" lean-forward="true" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
+            <state relative-caret-position="620">
+              <caret line="31" column="16" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sequential.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-592">
-              <caret line="114" selection-start-line="114" selection-end-line="160" selection-end-column="28" />
+            <state relative-caret-position="2360">
+              <caret line="123" column="32" selection-start-line="123" selection-start-column="32" selection-end-line="123" selection-end-column="32" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
                 <marker date="1625791824720" expanded="true" signature="127:1646" ph="..." />
@@ -114,16 +120,16 @@
         <entry file="file://$PROJECT_DIR$/body.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="340">
-              <caret line="17" column="21" lean-forward="true" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+              <caret line="17" column="21" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/parallel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3420">
-              <caret line="178" column="16" selection-start-line="131" selection-start-column="5" selection-end-line="131" selection-end-column="23" />
+            <state relative-caret-position="512">
+              <caret line="37" column="29" selection-start-line="37" selection-start-column="29" selection-end-line="37" selection-end-column="29" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
                 <marker date="1625758084747" expanded="true" signature="1938:1940" ph="..." />
@@ -197,7 +203,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="695" />
     <option name="width" value="1085" />
     <option name="height" value="955" />
@@ -405,9 +411,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="848" extended-state="7" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16721745" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.091209516" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -506,14 +513,29 @@
     <entry file="file://$PROJECT_DIR$/NBodyOrbit10_parallel.png" />
     <entry file="file://$PROJECT_DIR$/NBodyOrbit10.png" />
     <entry file="file://$PROJECT_DIR$/parallel.txt" />
-    <entry file="file://$PROJECT_DIR$/parallel.py">
+    <entry file="file://$PROJECT_DIR$/constants.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3420">
-          <caret line="178" column="16" selection-start-line="131" selection-start-column="5" selection-end-line="131" selection-end-column="23" />
+        <state relative-caret-position="620">
+          <caret line="31" column="16" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sequential.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2360">
+          <caret line="123" column="32" selection-start-line="123" selection-start-column="32" selection-end-line="123" selection-end-column="32" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
-            <marker date="1625758084747" expanded="true" signature="1938:1940" ph="..." />
+            <marker date="1625791824720" expanded="true" signature="127:1646" ph="..." />
+            <marker date="1625791824720" expanded="true" signature="4153:6241" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/body.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="17" column="21" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -533,28 +555,13 @@
     <entry file="file://$PROJECT_DIR$/resources/weak_scaling.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/constants.py">
+    <entry file="file://$PROJECT_DIR$/parallel.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="31" column="16" lean-forward="true" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/body.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="17" column="21" lean-forward="true" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sequential.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-592">
-          <caret line="114" selection-start-line="114" selection-end-line="160" selection-end-column="28" />
+        <state relative-caret-position="512">
+          <caret line="37" column="29" selection-start-line="37" selection-start-column="29" selection-end-line="37" selection-end-column="29" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
-            <marker date="1625791824720" expanded="true" signature="127:1646" ph="..." />
-            <marker date="1625791824720" expanded="true" signature="4153:6241" ph="..." />
+            <marker date="1625758084747" expanded="true" signature="1938:1940" ph="..." />
           </folding>
         </state>
       </provider>

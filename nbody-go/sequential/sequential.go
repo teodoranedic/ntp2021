@@ -1,7 +1,10 @@
-package main
+package sequential
 
 import (
+	"fmt"
 	"math"
+	"math/rand"
+	"time"
 
 	"gonum.org/v1/plot"
 	"gonum.org/v1/plot/plotter"
@@ -65,6 +68,10 @@ var su = types.Body{X: types.XSun, Y: types.YSun, Z: types.ZSun, VX: types.VXSun
 var s []types.Body = []types.Body{su, mer, ven, ear, mar, jupit, satu, uran, nept, plut}
 var masses []float64 = []float64{types.MSun, types.MMercury, types.MVenus, types.MEarth, types.MMars, types.MJup, types.MSaturn, types.MUranus, types.MNeptune, types.MPluto}
 
+func randFloats(min, max float64) float64 {
+	return min + rand.Float64()*(max-min)
+}
+
 func magnitude(x, y, z float64) float64 {
 	return math.Sqrt(x*x + y*y + z*z)
 }
@@ -122,8 +129,8 @@ func velocity_euler(vx, vy, vz, ax, ay, az, dt float64) (float64, float64, float
 	return vx_new, vy_new, vz_new
 }
 
-func run_simulation(N, planets int) { //(float64, float64, float64) {
-	// start := time.Now()
+func run_simulation(N, planets int) time.Duration { //(float64, float64, float64) {
+	start := time.Now()
 	// p1 = 0
 	// p2 = 0
 
@@ -170,18 +177,19 @@ func run_simulation(N, planets int) { //(float64, float64, float64) {
 		//     p2 += e2 - s2
 		//
 
-		// end = time.time()
 	}
-	// return end - start, p1, p2
+	end := time.Now()
+	elapsed_time := end.Sub(start)
+	return elapsed_time
 }
 
 func plot_results() {
 	all_points := make([]plotter.XYs, types.Planets)
 	for i, planet := range s {
 		points := make(plotter.XYs, types.N+1)
-		for i := range planet.X_hist {
-			points[i].X = planet.X_hist[i]
-			points[i].Y = planet.Y_hist[i]
+		for j := range planet.X_hist {
+			points[j].X = planet.X_hist[j]
+			points[j].Y = planet.Y_hist[j]
 		}
 		all_points[i] = points
 	}
@@ -214,7 +222,16 @@ func plot_results() {
 	}
 }
 
-func main() {
+func Sequential() {
+	rand.Seed(1)
+	for i := 0; i < types.Planets-10; i++ {
+		a := types.Body{X: randFloats(types.X1, types.X2), Y: randFloats(types.Y1, types.Y2), Z: randFloats(types.Z1, types.Z2), VX: types.VX_average, VY: types.VY_average,
+			VZ: types.VZ_average, Mass: types.Mass_average, Diameter: float64(types.D_average), X_hist: make([]float64, types.N+1), Y_hist: make([]float64, types.N+1), Z_hist: make([]float64, types.N+1),
+			VX_hist: make([]float64, types.N+1), VY_hist: make([]float64, types.N+1), VZ_hist: make([]float64, types.N+1), AX: 0.0, AY: 0.0, AZ: 0.0, AX_hist: make([]float64, types.N+1),
+			AY_hist: make([]float64, types.N+1), AZ_hist: make([]float64, types.N+1)}
+		s = append(s, a)
+		masses = append(masses, types.Mass_average)
+	}
 
 	for i := 0; i < types.Planets; i++ {
 		s[i].X_hist[0] = s[i].X
@@ -225,7 +242,8 @@ func main() {
 		s[i].VZ_hist[0] = s[i].VZ * types.DaYToYear
 	}
 
-	run_simulation(types.N, types.Planets)
+	elapsed_time := run_simulation(types.N, types.Planets)
+	fmt.Println(elapsed_time)
 
 	plot_results()
 
