@@ -19,7 +19,7 @@ var Planets_s = 10 // IncluDes Pluto anD the Sun
 
 // change this
 var N = 4000
-var Planets = 100
+var Planets = 10
 
 // ==============================================================================
 // 1988 - Jun - 20

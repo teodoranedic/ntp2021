@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"math"
 	"math/rand"
+	"os"
 	"time"
 
 	"gonum.org/v1/plot"
@@ -129,24 +130,24 @@ func velocity_euler(vx, vy, vz, ax, ay, az, dt float64) (float64, float64, float
 	return vx_new, vy_new, vz_new
 }
 
-func run_simulation(N, planets int) time.Duration { //(float64, float64, float64) {
+func run_simulation(N, planets int) (time.Duration, time.Duration, time.Duration) {
 	start := time.Now()
-	// p1 = 0
-	// p2 = 0
+	p1 := time.Duration(0)
+	p2 := time.Duration(0)
 
-	// print(N, planets)
+	fmt.Println(N, planets)
 	for i := 0; i < N; i++ {
 		// # find acceleration due to gravity
-		// s1 = time.time()
+		s1 := time.Now()
 		for j := 0; j < planets; j++ {
 			acceleration(s[j].X_hist[i], s[j].Y_hist[i], s[j].Z_hist[i], types.G, j, i)
 		}
 
-		// e1 = time.time()
+		e1 := time.Now()
 
 		//# velocity and position update
 		//# at the beginning of the array, you can't use leap frog, so it suffices to use the 1st order Euler method
-		// s2 = time.time()
+		s2 := time.Now()
 		if i == 0 {
 			for j := 0; j < planets; j++ {
 				// # velocity
@@ -172,15 +173,13 @@ func run_simulation(N, planets int) time.Duration { //(float64, float64, float64
 				s[j].X_hist[i+1], s[j].Y_hist[i+1], s[j].Z_hist[i+1] = x_new, y_new, z_new
 			}
 		}
-		//     e2 = time.time()
-		//     p1 += e1 - s1
-		//     p2 += e2 - s2
-		//
-
+		e2 := time.Now()
+		p1 += e1.Sub(s1)
+		p2 += e2.Sub(s2)
 	}
 	end := time.Now()
 	elapsed_time := end.Sub(start)
-	return elapsed_time
+	return elapsed_time, p1, p2
 }
 
 func plot_results() {
@@ -217,23 +216,39 @@ func plot_results() {
 	}
 
 	// Save the plot to a PNG file.
-	if err := p.Save(4*vg.Inch, 4*vg.Inch, "SolarSystem.png"); err != nil {
+	if err := p.Save(4*vg.Inch, 4*vg.Inch, "resources/SolarSystem.png"); err != nil {
 		panic(err)
 	}
 }
 
-func Sequential() {
+func generate_file(n, planets int) {
+	file, err := os.Create("resources/sequential.txt")
+	if err != nil {
+		return
+	}
+	defer file.Close()
+
+	for i := 0; i < n; i++ {
+		file.WriteString("ITERATION" + fmt.Sprint(i) + "\n")
+		for j := 0; j < planets; j++ {
+			file.WriteString(fmt.Sprint(s[j].X_hist[i]) + "," + fmt.Sprint(s[j].Y_hist[i]) + "," + fmt.Sprint(s[j].Z_hist[i]) + "," +
+				fmt.Sprint(s[j].VX_hist[i]) + "," + fmt.Sprint(s[j].VY_hist[i]) + "," + fmt.Sprint(s[j].VZ_hist[i]) + "\n")
+		}
+	}
+}
+
+func Sequential(n, planets int) (time.Duration, time.Duration, time.Duration) {
 	rand.Seed(1)
-	for i := 0; i < types.Planets-10; i++ {
+	for i := 0; i < planets-10; i++ {
 		a := types.Body{X: randFloats(types.X1, types.X2), Y: randFloats(types.Y1, types.Y2), Z: randFloats(types.Z1, types.Z2), VX: types.VX_average, VY: types.VY_average,
-			VZ: types.VZ_average, Mass: types.Mass_average, Diameter: float64(types.D_average), X_hist: make([]float64, types.N+1), Y_hist: make([]float64, types.N+1), Z_hist: make([]float64, types.N+1),
-			VX_hist: make([]float64, types.N+1), VY_hist: make([]float64, types.N+1), VZ_hist: make([]float64, types.N+1), AX: 0.0, AY: 0.0, AZ: 0.0, AX_hist: make([]float64, types.N+1),
-			AY_hist: make([]float64, types.N+1), AZ_hist: make([]float64, types.N+1)}
+			VZ: types.VZ_average, Mass: types.Mass_average, Diameter: float64(types.D_average), X_hist: make([]float64, n+1), Y_hist: make([]float64, n+1), Z_hist: make([]float64, n+1),
+			VX_hist: make([]float64, n+1), VY_hist: make([]float64, n+1), VZ_hist: make([]float64, n+1), AX: 0.0, AY: 0.0, AZ: 0.0, AX_hist: make([]float64, n+1),
+			AY_hist: make([]float64, n+1), AZ_hist: make([]float64, n+1)}
 		s = append(s, a)
 		masses = append(masses, types.Mass_average)
 	}
 
-	for i := 0; i < types.Planets; i++ {
+	for i := 0; i < planets; i++ {
 		s[i].X_hist[0] = s[i].X
 		s[i].Y_hist[0] = s[i].Y
 		s[i].Z_hist[0] = s[i].Z
@@ -242,9 +257,8 @@ func Sequential() {
 		s[i].VZ_hist[0] = s[i].VZ * types.DaYToYear
 	}
 
-	elapsed_time := run_simulation(types.N, types.Planets)
-	fmt.Println(elapsed_time)
-
-	plot_results()
-
+	elapsed_time, p1, p2 := run_simulation(n, planets)
+	// plot_results()
+	// generate_file(n, planets)
+	return elapsed_time, p1, p2
 }

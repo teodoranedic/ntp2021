@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"math"
 	"math/rand"
+	"os"
+	"runtime"
 	"time"
 
 	"gonum.org/v1/plot"
@@ -148,7 +150,8 @@ func add_array(base []float64, adding []float64) {
 	}
 }
 
-func run_simulation(N, planets int) time.Duration { //(float64, float64, float64) {
+func run_simulation(N, planets, cpu_count int) time.Duration {
+	runtime.GOMAXPROCS(cpu_count)
 	start := time.Now()
 
 	for i := 0; i < N; i++ {
@@ -249,23 +252,43 @@ func plot_results() {
 	}
 
 	// Save the plot to a PNG file.
-	if err := p.Save(4*vg.Inch, 4*vg.Inch, "SolarSystemParallel.png"); err != nil {
+	if err := p.Save(4*vg.Inch, 4*vg.Inch, "resources/SolarSystemParallel.png"); err != nil {
 		panic(err)
 	}
 }
 
-func Parallel() {
+func generate_file(n, planets int) {
+	file, err := os.Create("resources/parallel.txt")
+	if err != nil {
+		return
+	}
+	defer file.Close()
+
+	for i := 0; i < n; i++ {
+		file.WriteString("ITERATION" + fmt.Sprint(i) + "\n")
+		for j := 0; j < planets; j++ {
+			file.WriteString(fmt.Sprint(s[j].X_hist[i]) + "," + fmt.Sprint(s[j].Y_hist[i]) + "," + fmt.Sprint(s[j].Z_hist[i]) + "," +
+				fmt.Sprint(s[j].VX_hist[i]) + "," + fmt.Sprint(s[j].VY_hist[i]) + "," + fmt.Sprint(s[j].VZ_hist[i]) + "\n")
+		}
+	}
+}
+
+func Parallel(n, planets, cpu_count int) time.Duration {
 	rand.Seed(1)
-	for i := 0; i < types.Planets-10; i++ {
+	for i := 0; i < planets-10; i++ {
 		a := types.Body{X: randFloats(types.X1, types.X2), Y: randFloats(types.Y1, types.Y2), Z: randFloats(types.Z1, types.Z2), VX: types.VX_average, VY: types.VY_average,
-			VZ: types.VZ_average, Mass: types.Mass_average, Diameter: float64(types.D_average), X_hist: make([]float64, types.N+1), Y_hist: make([]float64, types.N+1), Z_hist: make([]float64, types.N+1),
-			VX_hist: make([]float64, types.N+1), VY_hist: make([]float64, types.N+1), VZ_hist: make([]float64, types.N+1), AX: 0.0, AY: 0.0, AZ: 0.0, AX_hist: make([]float64, types.N+1),
-			AY_hist: make([]float64, types.N+1), AZ_hist: make([]float64, types.N+1)}
+			VZ: types.VZ_average, Mass: types.Mass_average, Diameter: float64(types.D_average), X_hist: make([]float64, n+1), Y_hist: make([]float64, n+1), Z_hist: make([]float64, n+1),
+			VX_hist: make([]float64, n+1), VY_hist: make([]float64, n+1), VZ_hist: make([]float64, n+1), AX: 0.0, AY: 0.0, AZ: 0.0, AX_hist: make([]float64, n+1),
+			AY_hist: make([]float64, n+1), AZ_hist: make([]float64, n+1)}
 		s = append(s, a)
 		masses = append(masses, types.Mass_average)
 	}
 
-	for i := 0; i < types.Planets; i++ {
+	current_pos_x = make([]float64, planets)
+	current_pos_y = make([]float64, planets)
+	current_pos_z = make([]float64, planets)
+
+	for i := 0; i < planets; i++ {
 		s[i].X_hist[0] = s[i].X
 		s[i].Y_hist[0] = s[i].Y
 		s[i].Z_hist[0] = s[i].Z
@@ -277,9 +300,8 @@ func Parallel() {
 		current_pos_z[i] = s[i].Z
 	}
 
-	elapsed_time := run_simulation(types.N, types.Planets)
-	fmt.Println(elapsed_time)
-
-	plot_results()
-
+	elapsed_time := run_simulation(n, planets, cpu_count)
+	// plot_results()
+	// generate_file(n, planets)
+	return elapsed_time
 }
